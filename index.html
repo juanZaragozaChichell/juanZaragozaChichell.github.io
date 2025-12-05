@@ -6,119 +6,452 @@
   <title>Juan Zaragoza | Personal Site</title>
   <style>
     :root {
-      --bg: #0f1720;
-      --card: #152130;
-      --accent: #f4a261;
+      --bg: #0b1220;
+      --bg2: #0f1c30;
+      --card: rgba(255,255,255,0.04);
+      --stroke: rgba(255,255,255,0.08);
+      --accent: #ffb347;
+      --accent-2: #7dd3fc;
       --text: #e5e7eb;
       --muted: #9ca3af;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      background: radial-gradient(circle at 20% 20%, #1f2937, #0f1720 40%),
-                  radial-gradient(circle at 80% 0%, #1b2635, #0f1720 50%),
-                  #0f1720;
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(circle at 20% 20%, #142038 0%, #0b1220 45%),
+                  radial-gradient(circle at 80% 0%, #0f1c30 0%, #0b1220 45%),
+                  linear-gradient(135deg, #0b1220 0%, #0f1c30 60%, #0b1220 100%);
       color: var(--text);
       line-height: 1.6;
+      min-height: 100vh;
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    header {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 64px 24px 32px;
-      text-align: center;
-    }
-    header h1 { margin: 0 0 12px; font-size: 2.5rem; letter-spacing: 0.5px; }
-    header p { margin: 0; color: var(--muted); font-size: 1.05rem; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 0 24px 48px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,0.04);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-    }
-    .card h2 { margin-top: 0; font-size: 1.25rem; letter-spacing: 0.3px; }
-    .pill {
-      display: inline-block;
-      padding: 6px 10px;
-      margin: 4px 6px 4px 0;
-      border-radius: 999px;
-      background: rgba(244,162,97,0.12);
-      color: var(--accent);
-      font-size: 0.85rem;
-    }
-    ul { padding-left: 18px; margin: 12px 0; color: var(--muted); }
-    footer {
-      text-align: center;
+    
+    /* Front page styles */
+    .front-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       padding: 24px;
+      text-align: center;
+    }
+    .front-page h1 { 
+      margin: 0 0 16px 0; 
+      font-size: 3.2rem; 
+      letter-spacing: 0.5px; 
+    }
+    .front-page .description { 
+      margin: 0 0 32px 0; 
+      color: var(--muted); 
+      font-size: 1.15rem; 
+      max-width: 720px; 
+    }
+    
+    /* Navigation styles */
+    nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    nav a {
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--stroke);
+      color: var(--text);
+      font-size: 1rem;
+      letter-spacing: 0.1px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    nav a:hover { 
+      background: rgba(255,255,255,0.14); 
+      border-color: var(--accent); 
+      text-decoration: none;
+    }
+    nav a.active {
+      background: rgba(255,179,71,0.2);
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(255,179,71,0.3);
+    }
+    
+    /* Section styles */
+    .section {
+      display: none;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px;
+      min-height: 100vh;
+    }
+    .section.active { display: block; }
+    
+    .section-nav {
+      position: sticky;
+      top: 0;
+      background: rgba(11, 18, 32, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 16px 0;
+      margin-bottom: 32px;
+      z-index: 100;
+      border-bottom: 1px solid var(--stroke);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .home-button {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,179,71,0.2);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    
+    .home-button:hover {
+      background: rgba(255,179,71,0.3);
+      box-shadow: 0 0 15px rgba(255,179,71,0.2);
+    }
+    
+    .home-button svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--accent);
+    }
+    
+    .content-card {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: 14px;
+      padding: 32px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      backdrop-filter: blur(4px);
+    }
+    
+    .content-card h2 { 
+      margin-top: 0; 
+      font-size: 2rem; 
+      letter-spacing: 0.3px;
+      margin-bottom: 24px;
+    }
+    
+    /* Publications styles */
+    .publication {
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--stroke);
+    }
+    .publication:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .publication .authors {
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .publication .title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--accent-2);
+      margin-bottom: 8px;
+    }
+    .publication .venue {
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+    .publication .links {
+      margin-top: 12px;
+    }
+    .publication .links a {
+      display: inline-block;
+      padding: 6px 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--stroke);
+      border-radius: 8px;
+      margin-right: 8px;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    .publication .links a:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: var(--accent-2);
+      text-decoration: none;
+    }
+    
+    .pill { 
+      display: inline-block; 
+      padding: 6px 12px; 
+      margin: 4px 8px 4px 0; 
+      border-radius: 999px; 
+      background: rgba(255,179,71,0.14); 
+      color: var(--accent); 
+      font-size: 0.9rem; 
+    }
+    
+    .links-grid {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .links-grid a {
+      background: rgba(255,255,255,0.06);
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--stroke);
+      color: var(--text);
+      transition: all 0.2s ease;
+    }
+    .links-grid a:hover { 
+      background: rgba(255,255,255,0.12); 
+      border-color: var(--accent-2);
+      text-decoration: none;
+    }
+    
+    ul { 
+      padding-left: 24px; 
+      margin: 16px 0; 
+    }
+    ul li {
+      margin-bottom: 12px;
+      color: var(--muted);
+    }
+    
+    .gif-showcase {
+      margin-top: 48px;
+      max-width: 800px;
+      width: 100%;
+    }
+    
+    .gif-showcase img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+    
+    .gif-caption {
+      margin-top: 16px;
       color: var(--muted);
       font-size: 0.95rem;
+      line-height: 1.5;
+      text-align: center;
     }
-    .links a { margin: 0 10px; }
+    
+    @media (max-width: 640px) {
+      .front-page h1 { font-size: 2.4rem; }
+      .section-nav { position: relative; }
+      nav { gap: 8px; }
+      nav a { padding: 10px 14px; font-size: 0.95rem; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Juan Zaragoza</h1>
-    <p>Computational geometry, machining research, and tooling for CNC workflows.</p>
-    <div class="links" style="margin-top:14px;">
-      <a href="mailto:juan@example.com">Email</a>
-      <a href="https://github.com/juanZaragozaChichell" target="_blank" rel="noreferrer">GitHub</a>
-      <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+  <!-- Front Page -->
+  <div id="front" class="front-page">
+    <h1>Juan Zaragoza Chichell</h1>
+    <p class="description">Computational geometry, machining research, and tooling for CNC workflows.</p>
+    <nav>
+      <a onclick="showSection('about')">About</a>
+      <a onclick="showSection('publications')">Publications</a>
+      <a onclick="showSection('awards')">Prizes & Awards</a>
+      <a onclick="showSection('contact')">Contact</a>
+    </nav>
+    <div class="gif-showcase">
+      <img src="collision_detection.gif" alt="Collision detection algorithm animation" />
+      <p class="gif-caption">
+        Animation of the collision detection algorithm described in 
+        <a href="https://www.sciencedirect.com/science/article/abs/pii/S0010448524000526" target="_blank" rel="noreferrer">Collision-free Tool Motion Planning for 5-Axis CNC Machining with Toroidal Cutters</a>. 
+        See the <a href="https://github.com/juanZaragozaChichell/MillingAround" target="_blank" rel="noreferrer">GitHub project</a> for more!
+      </p>
     </div>
-  </header>
+  </div>
 
-  <main class="grid">
-    <section class="card">
-      <h2>About</h2>
-      <p>I work on collision detection, toolpath planning, and geometric algorithms for 5-axis CNC milling. This site links to ongoing projects, papers, and code that support safer and more efficient machining workflows.</p>
-      <div>
-        <span class="pill">Python</span>
-        <span class="pill">Open3D</span>
-        <span class="pill">Trimesh</span>
-        <span class="pill">Sphinx Docs</span>
+  <!-- About Section -->
+  <div id="about" class="section">
+    <div class="section-nav">
+      <div class="home-button" onclick="goHome()">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
       </div>
-    </section>
+      <nav>
+        <a onclick="showSection('about')" class="active">About</a>
+        <a onclick="showSection('publications')">Publications</a>
+        <a onclick="showSection('awards')">Prizes & Awards</a>
+        <a onclick="showSection('contact')">Contact</a>
+      </nav>
+    </div>
+    <div class="content-card">
+      <h2>About</h2>
+      <p>Hi everyone! My name is Juan Zaragoza Chichell. I am currently a final year PhD student in Computational Mathematics at BCAM - Basque Center for Applied Mathematics under the supervision of Dr. Michael Bartoň.</p>
+      
+      <p>My research is in computational geometry, geometric, solid and physical modeling and manufacturing with a particular focus on CNC machining applications and non-planar 3D printing. My work seeks to design optimal algorithms and methods for tool path planning and motion optimization for 5-axis CNC machining of free-form surfaces, with the goal of improving surface quality, reducing machining time, and minimizing tool wear.</p>
 
-    <section class="card">
-      <h2>Selected Projects</h2>
-      <ul>
-        <li>MillingAround: collision-free tool motion planning with toroidal cutters.</li>
-        <li>Point milling backend/frontend: geometric primitives for envelope construction.</li>
-        <li>Mesh generation toolkit: cones, cylinders, offsets, and visualization helpers.</li>
-      </ul>
-    </section>
+      <p>I obtained my BSc in Mathematics from Universidad de Salamanca (2021) and my MSc in Mathematical Research from Universitat Politècnica de València (2022). Before starting my PhD, I worked as a museum guide at the Museo Universitario Didáctico Interactivo de Ciencias (<a href="https://mudic.es" target="_blank" rel="noreferrer">MUDIC</a>) in Orihuela, my hometown, where I developed a passion for science communication and public engagement with mathematics and science.</p>
+    
+      <p>In my free time, I enjoy hiking and climbing, photography and cooking (I probably make the best Spanish Tortilla at this side of the Greenwich Meridian!).</p>
+      <div class="links-grid">
+        <a href="mailto:jzaragoza@bcamath.org">Email</a>
+        <a href="https://github.com/juanZaragozaChichell" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/juan-zaragoza-chichell-421420203/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </div>
 
-    <section class="card">
+  <!-- Publications Section -->
+  <div id="publications" class="section">
+    <div class="section-nav">
+      <div class="home-button" onclick="goHome()">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      </div>
+      <nav>
+        <a onclick="showSection('about')">About</a>
+        <a onclick="showSection('publications')" class="active">Publications</a>
+        <a onclick="showSection('awards')">Prizes & Awards</a>
+        <a onclick="showSection('contact')">Contact</a>
+      </nav>
+    </div>
+    <div class="content-card">
       <h2>Publications</h2>
-      <ul>
-        <li><strong>Collision-free Tool Motion Planning for 5-Axis CNC Machining with Toroidal Cutters</strong> — CAD 2024.</li>
-        <li>Additional machining and geometry papers coming soon.</li>
-      </ul>
-    </section>
+      
+      <div class="publication">
+        <div class="authors">Juan Zaragoza Chichell, Michal Bizzarri, Judith Echevarrieta Ibarra, Aritz Pérez, Michael Barton</div>
+        <div class="title">Evolution-based tool path and motion planning optimization for 5-axis CNC machining of free-form surfaces</div>
+        <div class="venue">Computer-Aided Design, Volume 190, 2025</div>
+        <div class="links">
+          <a href="https://www.sciencedirect.com/science/article/pii/S0010448525001125" target="_blank" rel="noreferrer">Publisher</a>
+          <a href="https://bird.bcamath.org/handle/20.500.11824/2094" target="_blank" rel="noreferrer">Free Version</a>
+        </div>
+      </div>
 
-    <section class="card">
+      <div class="publication">
+        <div class="authors">Kinga Kruppa, Juan Zaragoza Chichell, Michal Bizzarri, Michael Barton</div>
+        <div class="title">On tool wear optimized motion planning for 5-axis CNC machining of free-form surfaces using toroidal cutting tools</div>
+        <div class="venue">Computer-Aided Design, Volume 189, 2025</div>
+        <div class="links">
+          <a href="https://www.sciencedirect.com/science/article/pii/S0010448525001137" target="_blank" rel="noreferrer">Publisher</a>
+          <a href="https://bird.bcamath.org/handle/20.500.11824/2065" target="_blank" rel="noreferrer">Free Version</a>
+        </div>
+      </div>
+
+      <div class="publication">
+        <div class="authors">Juan Zaragoza Chichell, Alena Rečková, Michal Bizzarri, Michael Bartoň</div>
+        <div class="title">Collision-free Tool Motion Planning for 5-Axis CNC Machining with Toroidal Cutters</div>
+        <div class="venue">Computer-Aided Design, Volume 173, 2024</div>
+        <div class="links">
+          <a href="https://www.sciencedirect.com/science/article/abs/pii/S0010448524000526" target="_blank" rel="noreferrer">Publisher</a>
+          <a href="https://bird.bcamath.org/handle/20.500.11824/1842" target="_blank" rel="noreferrer">Free Version</a>
+          <a href="https://www.sciencedirect.com/science/article/pii/S0010448524001015" target="_blank" rel="noreferrer">SPM 2024 Best Paper Award</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Awards Section -->
+  <div id="awards" class="section">
+    <div class="section-nav">
+      <div class="home-button" onclick="goHome()">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      </div>
+      <nav>
+        <a onclick="showSection('about')">About</a>
+        <a onclick="showSection('publications')">Publications</a>
+        <a onclick="showSection('awards')" class="active">Prizes & Awards</a>
+        <a onclick="showSection('contact')">Contact</a>
+      </nav>
+    </div>
+    <div class="content-card">
+      <h2>Prizes & Awards</h2>
+      <ul>
+        <li><strong>MITACS GLOBALINK Research Award</strong> - Research stay at Concordia University under Dr. Tsz Ho Kwok supervision (March 15 - June 15, 2025)</li>
+        <li><strong>Best Paper Award</strong> - Symposium on Solid and Physical Modeling (SPM 2024) for "Collision-free Tool Motion Planning for 5-Axis CNC Machining with Toroidal Cutters"</li>
+        <li><strong>Severo Ochoa Grant</strong> - PRE2021-099981 funded by MICIU/AEI/10.13039/501100011033</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div id="contact" class="section">
+    <div class="section-nav">
+      <div class="home-button" onclick="goHome()">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      </div>
+      <nav>
+        <a onclick="showSection('about')">About</a>
+        <a onclick="showSection('publications')">Publications</a>
+        <a onclick="showSection('awards')">Prizes & Awards</a>
+        <a onclick="showSection('contact')" class="active">Contact</a>
+      </nav>
+    </div>
+    <div class="content-card">
       <h2>Contact</h2>
-      <p>Feel free to reach out for collaborations or questions about collision detection and machining software.</p>
+      <p>Feel free to reach out for collaborations or any type of discussion!</p>
       <ul>
-        <li>Email: <a href="mailto:juan@example.com">juan@example.com</a></li>
+        <li>Email: <a href="mailto:jzaragoza@bcamath.org">jzaragoza@bcamath.org</a></li>
         <li>GitHub: <a href="https://github.com/juanZaragozaChichell">github.com/juanZaragozaChichell</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/juan-zaragoza-chichell-421420203/">linkedin.com/in/juan-zaragoza-chichell-421420203</a></li>
       </ul>
-    </section>
-  </main>
+    </div>
+  </div>
 
-  <footer>
-    Built with plain HTML/CSS. Hosted on GitHub Pages.
-  </footer>
+  <script>
+    function goHome() {
+      // Hide all sections
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Show front page
+      document.getElementById('front').style.display = 'flex';
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+    
+    function showSection(sectionId) {
+      // Hide front page
+      document.getElementById('front').style.display = 'none';
+      
+      // Hide all sections
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Show selected section
+      document.getElementById(sectionId).classList.add('active');
+      
+      // Update active nav button in the current section
+      const activeSection = document.getElementById(sectionId);
+      const navLinks = activeSection.querySelectorAll('nav a');
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.textContent.toLowerCase().includes(sectionId.replace('-', ' '))) {
+          link.classList.add('active');
+        }
+      });
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+    
+    // Show front page on load
+    window.addEventListener('load', () => {
+      document.getElementById('front').style.display = 'flex';
+    });
+  </script>
 </body>
 </html>
