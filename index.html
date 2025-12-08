@@ -146,6 +146,31 @@
       margin-bottom: 24px;
     }
     
+    .about-layout {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    
+    .about-text {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .about-photo {
+      margin: 0;
+      flex-shrink: 0;
+    }
+    
+    .about-photo img {
+      width: 230px;
+      max-width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--stroke);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+      object-fit: cover;
+    }
+    
     /* Publications styles */
     .publication {
       margin-bottom: 32px;
@@ -234,6 +259,13 @@
       margin-top: 48px;
       max-width: 800px;
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    
+    .gif-item {
+      margin: 0;
     }
     
     .gif-showcase img {
@@ -249,6 +281,16 @@
       font-size: 0.95rem;
       line-height: 1.5;
       text-align: center;
+    }
+    
+    @media (max-width: 900px) {
+      .about-layout { 
+        flex-direction: column; 
+      }
+      .about-photo img { 
+        width: 100%; 
+        max-width: 320px; 
+      }
     }
     
     @media (max-width: 640px) {
@@ -271,12 +313,22 @@
       <a onclick="showSection('contact')">Contact</a>
     </nav>
     <div class="gif-showcase">
-      <img src="collision_detection.gif" alt="Collision detection algorithm animation" />
-      <p class="gif-caption">
-        Animation of the collision detection algorithm described in 
-        <a href="https://www.sciencedirect.com/science/article/abs/pii/S0010448524000526" target="_blank" rel="noreferrer">Collision-free Tool Motion Planning for 5-Axis CNC Machining with Toroidal Cutters</a>. 
-        See the <a href="https://github.com/juanZaragozaChichell/MillingAround" target="_blank" rel="noreferrer">GitHub project</a> for more!
-      </p>
+      <figure class="gif-item">
+        <img src="animations/collision_detection.gif" alt="Collision detection algorithm animation" />
+        <figcaption class="gif-caption">
+          Animation of the collision detection algorithm described in 
+          <a href="https://www.sciencedirect.com/science/article/abs/pii/S0010448524000526" target="_blank" rel="noreferrer">Collision-free Tool Motion Planning for 5-Axis CNC Machining with Toroidal Cutters</a>. 
+          See the <a href="https://github.com/juanZaragozaChichell/MillingAround" target="_blank" rel="noreferrer">GitHub project</a> for more!
+        </figcaption>
+      </figure>
+      <figure class="gif-item">
+        <img src="animations/evolution.png" alt="Optimization process animation" />
+        <figcaption class="gif-caption">
+          Animation of the optimization process described in
+          <a href="https://www.sciencedirect.com/science/article/pii/S0010448525001125#bib1" target="_blank" rel="noreferrer">Evolution-based tool path and motion planning optimization for 5-axis CNC machining of free-form surfaces</a>.
+          See the <a href="https://github.com/juanZaragozaChichell/PathOLogicalOptimist?tab=readme-ov-file" target="_blank" rel="noreferrer">GitHub project</a> for more!.
+        </figcaption>
+      </figure>
     </div>
   </div>
 
@@ -294,18 +346,25 @@
       </nav>
     </div>
     <div class="content-card">
-      <h2>About</h2>
-      <p>Hi everyone! My name is Juan Zaragoza Chichell. I am currently a final year PhD student in Computational Mathematics at BCAM - Basque Center for Applied Mathematics under the supervision of Dr. Michael Bartoň.</p>
-      
-      <p>My research is in computational geometry, geometric, solid and physical modeling and manufacturing with a particular focus on CNC machining applications and non-planar 3D printing. My work seeks to design optimal algorithms and methods for tool path planning and motion optimization for 5-axis CNC machining of free-form surfaces, with the goal of improving surface quality, reducing machining time, and minimizing tool wear.</p>
+      <div class="about-layout">
+        <div class="about-text">
+          <h2>About</h2>
+          <p>Hi everyone! My name is Juan Zaragoza Chichell. I am currently a final year PhD student in Computational Mathematics at BCAM - Basque Center for Applied Mathematics under the supervision of Dr. Michael Bartoň.</p>
+          
+          <p>My research is in computational geometry, geometric, solid and physical modeling and manufacturing with a particular focus on CNC machining applications and non-planar 3D printing. My work seeks to design optimal algorithms and methods for tool path planning and motion optimization for 5-axis CNC machining of free-form surfaces, with the goal of improving surface quality, reducing machining time, and minimizing tool wear.</p>
 
-      <p>I obtained my BSc in Mathematics from Universidad de Salamanca (2021) and my MSc in Mathematical Research from Universitat Politècnica de València (2022). Before starting my PhD, I worked as a museum guide at the Museo Universitario Didáctico Interactivo de Ciencias (<a href="https://mudic.es" target="_blank" rel="noreferrer">MUDIC</a>) in Orihuela, my hometown, where I developed a passion for science communication and public engagement with mathematics and science.</p>
-    
-      <p>In my free time, I enjoy hiking and climbing, photography and cooking (I probably make the best Spanish Tortilla at this side of the Greenwich Meridian!).</p>
-      <div class="links-grid">
-        <a href="mailto:jzaragoza@bcamath.org">Email</a>
-        <a href="https://github.com/juanZaragozaChichell" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/juan-zaragoza-chichell-421420203/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <p>I obtained my BSc in Mathematics from Universidad de Salamanca (2021) and my MSc in Mathematical Research from Universitat Politècnica de València (2022). Before starting my PhD, I worked as a museum guide at the Museo Universitario Didáctico Interactivo de Ciencias (<a href="https://mudic.es" target="_blank" rel="noreferrer">MUDIC</a>) in Orihuela, my hometown, where I developed a passion for science communication and public engagement with mathematics and science.</p>
+        
+          <p>In my free time, I enjoy hiking and climbing, photography and cooking (I probably make the best Spanish Tortilla at this side of the Greenwich Meridian!).</p>
+          <div class="links-grid">
+            <a href="mailto:jzaragoza@bcamath.org">Email</a>
+            <a href="https://github.com/juanZaragozaChichell" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/juan-zaragoza-chichell-421420203/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+        <figure class="about-photo">
+          <img src="images/profile_pic.jpeg" alt="Portrait of Juan Zaragoza Chichell" />
+        </figure>
       </div>
     </div>
   </div>
