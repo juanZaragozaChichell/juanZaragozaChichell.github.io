@@ -1,0 +1,118 @@
+\documentclass[a4paper,skipsamekey,11pt,english]{curve}
+
+% Default biblatex style used for the publication list is IEEE with name sorting (use bibtex backend to avoid biber dependency).
+\PassOptionsToPackage{backend=bibtex,style=ieee,sorting=ydnt,uniquename=init,defernumbers=true}{biblatex}
+
+% Most commands and style definitions are in settings.sty.
+\usepackage{settings}
+
+% Load biblatex with the options passed above.
+\usepackage{biblatex}
+
+% Remove the default "[Online] Available:" prefix before URLs when using the IEEE style.
+\DefineBibliographyStrings{english}{url={\textsc{url}}}
+
+% Bibliography placeholder (not printed in this CV).
+\addbibresource{own-bib.bib}
+
+% Show photo only if wrapped in fullonly (currently unused).
+\includecomment{fullonly}
+
+\leftheader{%
+  {\LARGE\bfseries\sffamily Juan Zaragoza Chichell}
+
+  \makefield{\faEnvelope[regular]}{\href{mailto:jzaragoza@bcamath.org}{\texttt{jzaragoza@bcamath.org}}}
+  \makefield{\faGithub}{\href{https://github.com/juanZaragozaChichell}{\texttt{juanZaragozaChichell}}}
+  \makefield{\faLinkedin}{\href{https://www.linkedin.com/in/juan-zaragoza-chichell-421420203/}{\texttt{juan-zaragoza-chichell-421420203}}}
+}
+
+\rightheader{~}
+
+\title{Curriculum Vitae}
+
+\begin{document}
+\makeheaders[c]
+
+\makeatletter
+
+% Education
+\newcommand{\rubric@education}{%
+  \section*{Education}
+  \begin{itemize}
+    \item \textbf{PhD in Computational Mathematics (Severo Ochoa Fellow)}\\
+    BCAM - Basque Center for Applied Mathematics (Supervisor: Dr. Michael Bartoň)\\
+    2022--present (final year)
+    \item \textbf{MSc in Mathematical Research}\\
+    Universitat Politècnica de València\\
+    2022
+    \item \textbf{BSc in Mathematics}\\
+    Universidad de Salamanca\\
+    2021
+  \end{itemize}
+}
+
+% Research Stay
+\newcommand{\rubric@researchstay}{%
+  \section*{Research Stay}
+  \begin{itemize}
+    \item \textbf{Concordia University}\\
+    Montreal, QC, Canada\\
+    Sypervised by Dr. Tsz Ho Kwok; funded by MITACS Globalink Research Awards; focus on non-plannar 3D printing. To be published.\\
+    Mar 15--Jun 15, 2025
+  \end{itemize}
+}
+
+% Publications
+\newcommand{\rubric@publications}{%
+  \section*{Publications}
+  \begin{itemize}
+    \item \textbf{Evolution-based tool path and motion planning optimization for 5-axis CNC machining of free-form surfaces}\\
+    J. Zaragoza Chichell, M. Bizzarri, J. Echevarrieta Ibarra, A. Pérez, M. Bartoň\\
+    Computer-Aided Design, Vol. 190. 2025\\
+    \item \textbf{On tool wear optimized motion planning for 5-axis CNC machining of free-form surfaces using toroidal cutting tools}\\
+    K. Kruppa, J. Zaragoza Chichell, M. Bizzarri, M. Bartoň\\
+    Computer-Aided Design, Vol. 189. 2025\\
+    \item \textbf{Collision-free Tool Motion Planning for 5-Axis CNC Machining with Toroidal Cutters}\\
+    J. Zaragoza Chichell, A. Rečková, M. Bizzarri, M. Bartoň\\
+    Computer-Aided Design, Vol. 173. 2024\\
+    
+  \end{itemize}
+}
+
+% Talks
+\newcommand{\rubric@talks}{%
+  \section*{Talks \& Conferences}
+  \begin{itemize}
+    \item \textbf{Evolution-based tool path and motion planning optimization for 5-axis CNC machining of free-form surfaces}\\
+    Symposium on Solid and Physical Modeling (SPM 2025), Hangzhou, Zhejiang, P.R. China.\\
+    Oct 29--Nov 2, 2025
+    \item \textbf{Collision-free Tool Motion Planning for 5-Axis CNC Machining with Toroidal Cutters}\\
+    Symposium on Solid and Physical Modeling (SPM 2024), Concordia University, Montreal, QC, Canada. Best Paper Award (SPM 2024).\\
+    Jul 8--10, 2024
+    \item \textbf{An optimal and error free method for collision detection}\\
+    Perspectivas de la investigación en matemáticas, Pamplona, Spain.\\
+    Nov 15--16, 2023
+  \end{itemize}
+}
+
+% Divulgation / Outreach
+\newcommand{\rubric@divulgacion}{%
+  \section*{Outreach}
+  \begin{itemize}
+    \item \textbf{Museum guide}\\
+    Museo Universitario Didáctico e Interactivo de Ciencias (MUDIC), Orihuela, Spain.\\
+    (University Didactic Interactive Science Museum)\\
+    Developed and led interactive science communication activities for public audiences.\\
+    2021
+  \end{itemize}
+}
+
+\makeatother
+
+\makerubric{education}
+\makerubric{researchstay}
+\makerubric{publications}
+\makerubric{talks}
+\makerubric{divulgacion}
+
+\end{document}

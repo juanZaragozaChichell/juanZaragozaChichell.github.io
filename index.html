@@ -215,6 +215,56 @@
       border-color: var(--accent-2);
       text-decoration: none;
     }
+
+    /* Talks styles */
+    .talk {
+      padding: 18px 20px;
+      margin-bottom: 20px;
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+    }
+    .talk:last-child {
+      margin-bottom: 0;
+    }
+    .talk-title {
+      font-weight: 600;
+      color: var(--accent-2);
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+    .talk-event {
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .talk-meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* CV styles */
+    .cv-group {
+      margin-bottom: 28px;
+    }
+    .cv-group h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+    .cv-item {
+      margin-bottom: 14px;
+    }
+    .cv-title {
+      font-weight: 600;
+      color: var(--accent-2);
+    }
+    .cv-detail {
+      color: var(--text);
+    }
+    .cv-date {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
     
     .pill { 
       display: inline-block; 
@@ -309,7 +359,8 @@
     <nav>
       <a onclick="showSection('about')">About</a>
       <a onclick="showSection('publications')">Publications</a>
-      <a onclick="showSection('awards')">Prizes & Awards</a>
+      <a onclick="showSection('talks')">Talks</a>
+      <a onclick="showSection('cv')">CV</a>
       <a onclick="showSection('contact')">Contact</a>
     </nav>
     <div class="gif-showcase">
@@ -341,7 +392,8 @@
       <nav>
         <a onclick="showSection('about')" class="active">About</a>
         <a onclick="showSection('publications')">Publications</a>
-        <a onclick="showSection('awards')">Prizes & Awards</a>
+        <a onclick="showSection('talks')">Talks</a>
+        <a onclick="showSection('cv')">CV</a>
         <a onclick="showSection('contact')">Contact</a>
       </nav>
     </div>
@@ -353,7 +405,9 @@
           
           <p>My research is in computational geometry, geometric, solid and physical modeling and manufacturing with a particular focus on CNC machining applications and non-planar 3D printing. My work seeks to design optimal algorithms and methods for tool path planning and motion optimization for 5-axis CNC machining of free-form surfaces, with the goal of improving surface quality, reducing machining time, and minimizing tool wear.</p>
 
-          <p>I obtained my BSc in Mathematics from Universidad de Salamanca (2021) and my MSc in Mathematical Research from Universitat Politècnica de València (2022). Before starting my PhD, I worked as a museum guide at the Museo Universitario Didáctico Interactivo de Ciencias (<a href="https://mudic.es" target="_blank" rel="noreferrer">MUDIC</a>) in Orihuela, my hometown, where I developed a passion for science communication and public engagement with mathematics and science.</p>
+          <p>As part of my PhD studies, I undertook a research stay at Concordia University under the supervision of Prof. Tsz Ho Kwok, funded by the MITACS Globalink Research Award.</p>
+
+          <p>I obtained my BSc in Mathematics from Universidad de Salamanca (2021) and my MSc in Mathematical Research from Universitat Politècnica de València (2022). Before starting my PhD, I worked as a museum guide at the Museo Universitario Didáctico Interactivo de Ciencias (<a href="https://mudic.es" target="_blank" rel="noreferrer">MUDIC</a>) in Orihuela, my hometown, where I developed a passion for science communication and public engagement with mathematics and science. My PhD research is funded by the Severo Ochoa fellowship (PRE2021-099981).</p>
         
           <p>In my free time, I enjoy hiking and climbing, photography and cooking (I probably make the best Spanish Tortilla at this side of the Greenwich Meridian!).</p>
           <div class="links-grid">
@@ -378,7 +432,8 @@
       <nav>
         <a onclick="showSection('about')">About</a>
         <a onclick="showSection('publications')" class="active">Publications</a>
-        <a onclick="showSection('awards')">Prizes & Awards</a>
+        <a onclick="showSection('talks')">Talks</a>
+        <a onclick="showSection('cv')">CV</a>
         <a onclick="showSection('contact')">Contact</a>
       </nav>
     </div>
@@ -408,7 +463,7 @@
       <div class="publication">
         <div class="authors">Juan Zaragoza Chichell, Alena Rečková, Michal Bizzarri, Michael Bartoň</div>
         <div class="title">Collision-free Tool Motion Planning for 5-Axis CNC Machining with Toroidal Cutters</div>
-        <div class="venue">Computer-Aided Design, Volume 173, 2024</div>
+        <div class="venue">Computer-Aided Design, Volume 173, 2024 — SPM 2024 Best Paper Award</div>
         <div class="links">
           <a href="https://www.sciencedirect.com/science/article/abs/pii/S0010448524000526" target="_blank" rel="noreferrer">Publisher</a>
           <a href="https://bird.bcamath.org/handle/20.500.11824/1842" target="_blank" rel="noreferrer">Free Version</a>
@@ -418,8 +473,8 @@
     </div>
   </div>
 
-  <!-- Awards Section -->
-  <div id="awards" class="section">
+  <!-- Talks Section -->
+  <div id="talks" class="section">
     <div class="section-nav">
       <div class="home-button" onclick="goHome()">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
@@ -427,17 +482,130 @@
       <nav>
         <a onclick="showSection('about')">About</a>
         <a onclick="showSection('publications')">Publications</a>
-        <a onclick="showSection('awards')" class="active">Prizes & Awards</a>
+        <a onclick="showSection('talks')" class="active">Talks</a>
+        <a onclick="showSection('cv')">CV</a>
         <a onclick="showSection('contact')">Contact</a>
       </nav>
     </div>
     <div class="content-card">
-      <h2>Prizes & Awards</h2>
-      <ul>
-        <li><strong>MITACS GLOBALINK Research Award</strong> - Research stay at Concordia University under Dr. Tsz Ho Kwok supervision (March 15 - June 15, 2025)</li>
-        <li><strong>Best Paper Award</strong> - Symposium on Solid and Physical Modeling (SPM 2024) for "Collision-free Tool Motion Planning for 5-Axis CNC Machining with Toroidal Cutters"</li>
-        <li><strong>Severo Ochoa Grant</strong> - PRE2021-099981 funded by MICIU/AEI/10.13039/501100011033</li>
-      </ul>
+      <h2>Talks & Conferences</h2>
+
+      <div class="talk">
+        <div class="talk-title">Evolution-based tool path and motion planning optimization for 5-axis CNC machining of free-form surfaces</div>
+        <div class="talk-event">Symposium on Solid and Physical Modeling (SPM 2025)</div>
+        <div class="talk-meta">Hangzhou, Zhejiang, P.R. China - October 29 - November 2, 2025.</div>
+      </div>
+
+      <div class="talk">
+        <div class="talk-title">Collision-free Tool Motion Planning for 5-Axis CNC Machining with Toroidal Cutters</div>
+        <div class="talk-event">Symposium on Solid and Physical Modeling (SPM 2024)</div>
+        <div class="talk-meta">Montreal, QC, Canada - July 8-10, 2024. Awarded Best Paper (SPM 2024).</div>
+      </div>
+
+      <div class="talk">
+        <div class="talk-title">An optimal and error free method for collision detection</div>
+        <div class="talk-event">Perspectivas de la investigación en matemáticas (INAMAT2)</div>
+        <div class="talk-meta">Pamplona, Spain - November 15-16, 2023.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CV Section -->
+  <div id="cv" class="section">
+    <div class="section-nav">
+      <div class="home-button" onclick="goHome()">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      </div>
+      <nav>
+        <a onclick="showSection('about')">About</a>
+        <a onclick="showSection('publications')">Publications</a>
+        <a onclick="showSection('talks')">Talks</a>
+        <a onclick="showSection('cv')" class="active">CV</a>
+        <a onclick="showSection('contact')">Contact</a>
+      </nav>
+    </div>
+    <div class="content-card">
+      <h2>Curriculum Vitae</h2>
+      <div class="cv-group">
+        <h3>Education</h3>
+        <div class="cv-item">
+          <div class="cv-title">PhD in Computational Mathematics (Severo Ochoa Fellow)</div>
+          <div class="cv-detail">BCAM - Basque Center for Applied Mathematics (Supervisor: Dr. Michael Bartoň)</div>
+          <div class="cv-date">2022--present (final year)</div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-title">MSc in Mathematical Research</div>
+          <div class="cv-detail">Universitat Politècnica de València</div>
+          <div class="cv-date">2022</div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-title">BSc in Mathematics</div>
+          <div class="cv-detail">Universidad de Salamanca</div>
+          <div class="cv-date">2021</div>
+        </div>
+      </div>
+
+      <div class="cv-group">
+        <h3>Research Stay</h3>
+        <div class="cv-item">
+          <div class="cv-title">Concordia University</div>
+          <div class="cv-detail">Montreal, QC, Canada</div>
+          <div class="cv-detail">Sypervised by Dr. Tsz Ho Kwok; funded by MITACS Globalink Research Awards; focus on non-plannar 3D printing. To be published.</div>
+          <div class="cv-date">Mar 15--Jun 15, 2025</div>
+        </div>
+      </div>
+
+      <div class="cv-group">
+        <h3>Publications</h3>
+        <div class="cv-item">
+          <div class="cv-title">Evolution-based tool path and motion planning optimization for 5-axis CNC machining of free-form surfaces</div>
+          <div class="cv-detail">J. Zaragoza Chichell, M. Bizzarri, J. Echevarrieta Ibarra, A. Pérez, M. Bartoň</div>
+          <div class="cv-detail">Computer-Aided Design, Vol. 190.</div>
+          <div class="cv-date">2025</div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-title">On tool wear optimized motion planning for 5-axis CNC machining of free-form surfaces using toroidal cutting tools</div>
+          <div class="cv-detail">K. Kruppa, J. Zaragoza Chichell, M. Bizzarri, M. Bartoň</div>
+          <div class="cv-detail">Computer-Aided Design, Vol. 189.</div>
+          <div class="cv-date">2025</div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-title">Collision-free Tool Motion Planning for 5-Axis CNC Machining with Toroidal Cutters</div>
+          <div class="cv-detail">J. Zaragoza Chichell, A. Rečková, M. Bizzarri, M. Bartoň</div>
+          <div class="cv-detail">Computer-Aided Design, Vol. 173.</div>
+          <div class="cv-date">2024</div>
+        </div>
+      </div>
+
+      <div class="cv-group">
+        <h3>Talks & Conferences</h3>
+        <div class="cv-item">
+          <div class="cv-title">Evolution-based tool path and motion planning optimization for 5-axis CNC machining of free-form surfaces</div>
+          <div class="cv-detail">Symposium on Solid and Physical Modeling (SPM 2025), Hangzhou, Zhejiang, P.R. China.</div>
+          <div class="cv-date">Oct 29--Nov 2, 2025</div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-title">Collision-free Tool Motion Planning for 5-Axis CNC Machining with Toroidal Cutters</div>
+          <div class="cv-detail">Symposium on Solid and Physical Modeling (SPM 2024), Concordia University, Montreal, QC, Canada. Best Paper Award (SPM 2024).</div>
+          <div class="cv-date">Jul 8--10, 2024</div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-title">An optimal and error free method for collision detection</div>
+          <div class="cv-detail">Perspectivas de la investigación en matemáticas (INAMAT2), Pamplona, Spain.</div>
+          <div class="cv-date">Nov 15--16, 2023</div>
+        </div>
+      </div>
+
+      <div class="cv-group">
+        <h3>Outreach</h3>
+        <div class="cv-item">
+          <div class="cv-title">Museum guide</div>
+          <div class="cv-detail">Museo Universitario Didáctico e Interactivo de Ciencias (MUDIC), Orihuela, Spain.</div>
+          <div class="cv-detail">(University Didactic Interactive Science Museum)</div>
+          <div class="cv-detail">Developed and led interactive science communication activities for public audiences.</div>
+          <div class="cv-date">2021</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -450,7 +618,8 @@
       <nav>
         <a onclick="showSection('about')">About</a>
         <a onclick="showSection('publications')">Publications</a>
-        <a onclick="showSection('awards')">Prizes & Awards</a>
+        <a onclick="showSection('talks')">Talks</a>
+        <a onclick="showSection('cv')">CV</a>
         <a onclick="showSection('contact')" class="active">Contact</a>
       </nav>
     </div>

@@ -1,0 +1,38 @@
+\ProvidesPackage{settings}[2025/01/10 Minimal CV settings]
+
+\RequirePackage{iftex}
+\newif\ifxetexorluatex
+\ifXeTeX
+  \xetexorluatextrue
+\else
+  \ifLuaTeX
+    \xetexorluatextrue
+  \else
+    \xetexorluatexfalse
+  \fi
+\fi
+
+\ifxetexorluatex
+  \RequirePackage{fontspec}
+  \RequirePackage[p,osf,swashQ]{cochineal}
+  \RequirePackage[medium,bold]{cabin}
+  \RequirePackage[varqu,varl,scale=0.9]{zi4}
+\else
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage[p,osf,swashQ]{cochineal}
+  \RequirePackage{cabin}
+  \RequirePackage[varqu,varl,scale=0.9]{zi4}
+\fi
+
+\RequirePackage{enumitem}
+\setlist[itemize]{leftmargin=1.2em}
+\RequirePackage{comment}
+\RequirePackage{xcolor}
+
+% Icons (load if available).
+\IfFileExists{fontawesome5.sty}{\RequirePackage{fontawesome5}}{}
+\IfFileExists{simpleicons.sty}{\RequirePackage{simpleicons}}{}
+
+% Helper to align icon + text fields.
+\newcommand{\makefield}[2]{#1\ #2\\}
